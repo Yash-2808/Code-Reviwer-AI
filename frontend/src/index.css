@@ -1,0 +1,282 @@
+/* ==========================================
+   CodeReviewer AI — Space/AI Futuristic Theme
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* Animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-cyan {
+  0%, 100% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.25); }
+  50% { box-shadow: 0 0 30px rgba(0, 240, 255, 0.6), 0 0 45px rgba(99, 102, 241, 0.3); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer-neon {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Root Colors matching the SS */
+:root {
+  --bg-primary: #040516; /* Deepest blue/black */
+  --bg-secondary: #080926;
+  --bg-card: rgba(8, 9, 38, 0.65);
+  --bg-glass: rgba(6, 7, 26, 0.55);
+  --border-glass: rgba(0, 240, 255, 0.12);
+  --border-hover: rgba(0, 240, 255, 0.4);
+  --accent-cyan: #00f0ff;
+  --accent-blue: #3b82f6;
+  --accent-purple: #8b5cf6;
+  --accent-neon-green: #00ffaa;
+  
+  --gradient-neon: linear-gradient(135deg, #00f0ff, #3b82f6, #8b5cf6);
+  --gradient-btn-neon: linear-gradient(90deg, #00f0ff, #3b82f6);
+  --text-primary: #f1f5f9;
+  --text-secondary: #8f9bb3;
+  --text-muted: #576580;
+}
+
+/* Base Body Styles */
+body {
+  background: var(--bg-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Deep Cyberpunk Glowing Background Elements */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse 70% 60% at 20% 15%, rgba(0, 240, 255, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse 60% 65% at 85% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(8, 9, 38, 0.95) 0%, var(--bg-primary) 100%);
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Subtle futuristic grid overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Glass Card Effect matching SS */
+.glass-card {
+  background: var(--bg-glass) !important;
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border: 1px solid var(--border-glass) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
+              0 0 20px rgba(0, 240, 255, 0.03) inset;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 20px !important;
+}
+
+.glass-card:hover {
+  border-color: var(--border-hover) !important;
+  box-shadow: 0 15px 50px rgba(0, 240, 255, 0.15),
+              0 0 30px rgba(0, 240, 255, 0.05) inset;
+  transform: translateY(-3px);
+}
+
+/* Navbar glass */
+.navbar-glass {
+  background: rgba(4, 5, 22, 0.75) !important;
+  backdrop-filter: blur(24px) saturate(2);
+  -webkit-backdrop-filter: blur(24px) saturate(2);
+  border: 1px solid rgba(0, 240, 255, 0.15) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4),
+              0 0 15px rgba(0, 240, 255, 0.05) inset;
+  border-radius: 24px !important;
+}
+
+/* Glowing badge for logo */
+.logo-badge {
+  position: relative;
+  background: var(--gradient-btn-neon) !important;
+  color: #040516 !important;
+  animation: pulse-cyan 3s ease-in-out infinite;
+}
+
+.logo-badge::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: var(--gradient-btn-neon);
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.6;
+}
+
+/* SS Neon Pill buttons */
+.btn-neon-cyan {
+  background: var(--gradient-btn-neon) !important;
+  color: #040516 !important;
+  font-weight: 700 !important;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.35) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-neon-cyan:hover:not(:disabled) {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 25px rgba(0, 240, 255, 0.6) !important;
+}
+
+/* Outline pill buttons from SS */
+.btn-neon-outline {
+  background: transparent !important;
+  color: var(--accent-cyan) !important;
+  border: 1.5px solid var(--accent-cyan) !important;
+  border-radius: 50px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-neon-outline:hover {
+  background: rgba(0, 240, 255, 0.08) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+/* SS glowing text */
+.title-gradient {
+  background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 70%, #00f0ff) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+}
+
+/* Tabs style from SS */
+.tab-premium {
+  transition: all 0.3s ease;
+}
+
+/* Status Indicator Dot */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* Custom Editor wrapper */
+.editor-wrapper {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.editor-wrapper:hover {
+  border-color: rgba(0, 240, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.06);
+}
+
+/* Circular progress glow */
+.circular-progress-glow {
+  filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.3));
+}
+
+/* Shimmer Loading placeholders */
+.shimmer {
+  background: linear-gradient(90deg, 
+    rgba(0, 240, 255, 0.03) 25%, 
+    rgba(0, 240, 255, 0.1) 50%, 
+    rgba(0, 240, 255, 0.03) 75%);
+  background-size: 200% 100%;
+  animation: shimmer-neon 1.5s ease-in-out infinite;
+}
+
+/* Loading custom dots */
+.loading-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  animation: typing-dots 1.4s infinite ease-in-out;
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: 0.2s;
+  background: var(--accent-blue);
+}
+
+.loading-dot:nth-child(3) {
+  animation-delay: 0.4s;
+  background: var(--accent-purple);
+}
+
+/* Modal styling matching SS */
+.modal-glass {
+  background: rgba(6, 7, 26, 0.95) !important;
+  backdrop-filter: blur(30px) saturate(2);
+  border: 1px solid rgba(0, 240, 255, 0.25) !important;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6),
+              0 0 30px rgba(0, 240, 255, 0.05) inset;
+}
+
+/* Custom list items for bugs/improvements */
+.bug-item {
+  border: 1px solid rgba(244, 63, 94, 0.1) !important;
+  transition: all 0.3s ease;
+}
+
+.bug-item:hover {
+  transform: translateX(4px);
+  border-color: rgba(244, 63, 94, 0.3) !important;
+  box-shadow: 0 4px 15px rgba(244, 63, 94, 0.08);
+}
+
+.improvement-item {
+  border: 1px solid rgba(0, 255, 170, 0.1) !important;
+  transition: all 0.3s ease;
+}
+
+.improvement-item:hover {
+  transform: translateX(4px);
+  border-color: rgba(0, 255, 170, 0.3) !important;
+  box-shadow: 0 4px 15px rgba(0, 255, 170, 0.08);
+}
