@@ -1,6 +1,6 @@
 # Code Reviewer - AI-Powered Code Analysis Tool
 
-An intelligent code analysis platform powered by **Google Gemini 3.5 Flash AI**. This tool provides real-time code conversion, debugging, and quality analysis with a modern React frontend and Express backend.
+An intelligent code analysis platform. This tool provides real-time code conversion, debugging, and quality analysis with a modern React frontend and Express backend.
 
 ## Features
 
